@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+
+ <title>Ward's Candidate details</title>
+  
+  <meta property="og:locale" content="en_US" />
+  <link rel="canonical" href="https://www.foodhelpchennai.in/" />
+  <link rel="shortcut icon" type="image/x-icon" href="fhc-favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.4/dist/sheetrock.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="px-4 py-3 my-3 text-center">
+    <p id="headerlist" font="10px" style="font-family: Arial, Helvetica, sans-serif;">A Detailed list of candidates in your ward along with their affidavit </p>
+      
+	  <select class="form-select" id="candidate_list" aria-label="Default select example" style="font-size: 14px;align-self: center;font-family: Arial, Helvetica, sans-serif;">
+        <option value="" selected>Select your Ward </option>
+         <option value="1">Ward 1</option>
+         <option value="2">Ward 2</option>
+         <option value="3">Ward 3</option>
+      </select>   
+  </div>
+  
+<div class="container">
+  <div id="results" class="px-2 py-1 my-1 text-center">
+    <h3 class="display-8 fw-bold">Candidates in your Ward</h3>
+    
+    <table id="people" class="table table-condensed table-hover table-responsive" style="font-size: 14px;align-self: center;font-family: Arial, Helvetica, sans-serif;"></table>
+  </div>
+	
+  <script type="text/javascript">
+	var candidateDetails = 'https://docs.google.com/spreadsheets/d/1MZ5oVdRTsnB2-AH3XFEc59UZtOpao_DCMeLzqJv4fDA/edit#gid=0';
+    
+    var paidAreas = "https://spreadsheets.google.com/feeds/cells/1ZRr1JrH0xD4WhzGgcg_Z4HMKabeGCIEo_z6vHDGSn_Q/2/public/full?alt=json";
+    
+    var wardQuery = 'select A,B,C,D,E where lower(F) = 1';
+	
+	$("#candidate_list").change(function(){
+      var val = $(this).val();
+      search(val, candidateDetails);
+    });
+	
+    function add_phone_numbers(error, options, response){
+        if (!error) {
+          var tbody = document.createElement('tbody'); 
+
+          rows = response.rows;     
+
+          rows.forEach(function (row, row_index) {
+
+            var tr = document.createElement('tr');
+            if(row_index==0)
+            tr.bgColor = "#3CB371";
+            row.cellsArray.forEach(function (cell, cell_index) {
+              var td = document.createElement('td');
+              tr.appendChild(td);
+              var clean_text = cell.trim();
+              //find valid phone numbers in cell data annd add whatsapp link to it
+            });
+            tbody.appendChild(tr);
+
+          });
+          $('#people').empty();
+          document.getElementById('people').appendChild(tbody);  
+        }
+      }
+    
+    function search(val, spreadsheet, squery){
+      $('#noresults').hide();
+      $('#results').hide();
+      $('#people').empty();
+      if(val != ""){
+        if(val != viewFullList)
+          squery = squery + "'"+ val.toLowerCase() +"'";
+        $('#people').sheetrock({
+          url: spreadsheet,
+          query: squery,
+          reset: true
+        });
+        $('#results').show();
+      }
+    }
+
+    $(document ).ready(function() {
+      $('.scrollToTop').hide();
+      //Check to see if the window is top if not then display button
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 80) {
+            $('.scrollToTop').fadeIn();
+        } else {
+            $('.scrollToTop').fadeOut();
+        }
+    });
+      $('#noresults').hide();
+      $('#results').hide();
+	});
+
+    
+  </script>
+</div>
+<p>
+  <div>
+    <a href="#top" class="scrollToTop" style="position: absolute;right: 0;"><img src='scrollup.jpg' alt="Scroll Up" style='width: 50px;height: 50px;'/></a>
+  <script>
+       $("a[href='#top']").click(function() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
+  </script>
+</div>
+</p>
+</body>
+</html>
