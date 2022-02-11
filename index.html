@@ -1,121 +1,137 @@
+<!DOCTYPE HTML>
+<html>
 
-<!DOCTYPE html>
-<html lang="en-US">
 <head>
-  <meta charset="UTF-8">
-
- <title>Ward's Candidate details</title>
-  
-  <meta property="og:locale" content="en_US" />
-  <link rel="canonical" href="https://www.foodhelpchennai.in/" />
-  <link rel="shortcut icon" type="image/x-icon" href="fhc-favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.4/dist/sheetrock.min.js"></script>
-  <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<title>Know your ward's candidate</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	
+	<!-- <base href="https://tnsec.tn.nic.in/nomination_view_urban2021/corporation_councillor_details.php?dcode=Mjk%3D&amp;corpcode=NTgw&amp;ward_name=V2FyZCAx&amp;post_code=Ng%3D%3D&amp;ward_no=MQ%3D%3D"> 
+	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"> 
+  <link href="css/animate.min.css" rel="stylesheet"> 
+  <link href="css/animate.css" rel="stylesheet"> 
+  <link href="css/prettyPhoto.css" rel="stylesheet"> 
+  <link href="css/style.css" rel="stylesheet"> 
+  <link href="css/custom.css" rel="stylesheet"> 
+  <link href="owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">  -->
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<style>
+		#txtDate, #txtDate2 {
+		  background-color: #fafafa;
+		  border:0;
+		  box-shadow:0 0 4px rgba(0,0,0,0.3);
+		  transition: .3s box-shadow;
+		}
+		#txtDate:hover, txtDate2 {
+		  box-shadow:0 0 4px rgba(0,0,0,0.5);
+		}
+		
+		table.tableizer-table {
+				font-size: 12px;
+				border: 1px solid #CCC; 
+				font-family: Arial, Helvetica, sans-serif;
+			} 
+			.tableizer-table td {
+				padding: 4px;
+				margin: 3px;
+				border: 1px solid #CCC;
+			}
+			.tableizer-table th {
+				background-color: #104E8B; 
+				color: #FFF;
+				font-weight: bold;
+			}
+			table {
+				display:none;
+			}
+	</style>
 </head>
+
 <body>
-  <div class="px-4 py-3 my-3 text-center">
-    <p id="headerlist" font="10px" style="font-family: Arial, Helvetica, sans-serif;">A Detailed list of candidates in your ward along with their affidavit </p>
-      
-	  <select class="form-select" id="candidate_list" aria-label="Default select example" style="font-size: 14px;align-self: center;font-family: Arial, Helvetica, sans-serif;">
-        <option value="" selected>Select your Ward </option>
-         <option value="1">Ward 1</option>
-         <option value="2">Ward 2</option>
-         <option value="3">Ward 3</option>
-      </select>   
-  </div>
-  
-<div class="container">
-  <div id="results" class="px-2 py-1 my-1 text-center">
-    <h3 class="display-8 fw-bold">Candidates in your Ward</h3>
-    
-    <table id="people" class="table table-condensed table-hover table-responsive" style="font-size: 14px;align-self: center;font-family: Arial, Helvetica, sans-serif;"></table>
-  </div>
-	
-  <script type="text/javascript">
-	var candidateDetails = 'https://docs.google.com/spreadsheets/d/1MZ5oVdRTsnB2-AH3XFEc59UZtOpao_DCMeLzqJv4fDA/edit#gid=0';
-    
-    var paidAreas = "https://spreadsheets.google.com/feeds/cells/1ZRr1JrH0xD4WhzGgcg_Z4HMKabeGCIEo_z6vHDGSn_Q/2/public/full?alt=json";
-    
-    var wardQuery = 'select A,B,C,D,E where lower(F) = 1';
-	
-	$("#candidate_list").change(function(){
-      var val = $(this).val();
-      search(val, candidateDetails);
+	<div class="px-4 py-4 my-4 text-center"> <!--<img src='' alt="Banner" style="width: 90%; height: auto; padding: 2rem;" /> </div> -->
+  </div> 
+<br/>  
+<br/>  
+		<div class="container">
+			<p class="lead mb-4 text-center" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;"> Know your ward's candidate and their affidavit </p>
+			<!-- <p class="lead mb-4 text-center" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;"> </p> -->
+			<hr/>
+			<div>
+				<!-- <h4 class="lead mb-4 text-center" style="font-size:18px;font-family: Arial, Helvetica, sans-serif;">  &nbsp; </h4>
+				 --><!-- <h5> <input type="number" style="padding: 4px 4px 4px 4px" placeholder="Ward Number" id = "txtDate" min="1" max="100" /> </h5> --> 
+			
+				<center> 
+				<!-- <form name="wardForm"> -->
+				<select id="dropdown" class="lead mb-3 text-center" style= "padding: 5px;" name="ward" ><!--onchange="goToPage(this.form.ward)"-->
+					<option value="none" selected disabled hidden>Choose your ward number</option>        
+					<option value="table1">Ward 1</a></option>
+					<option value="table2">Ward 2</a></option>
+					<option value="table3">Ward 3</a></option>
+				</select> </center>
+				
+				<!-- <iframe id="iframe" name="iframe" align="top" height="600px" width="95%"  align="middle" style="border:none;"></iframe>
+				</form> -->
+				<table id="table1" class="table tableizer-table">
+					<thead><tr class="tableizer-firstrow"><th>Serial Number</th><th>Name of the candidate</th><th>Age</th><th>Name of political party</th><th>Affidavit</th></tr></thead><tbody>
+					 <tr><td>1</td><td>Mr. Manivarma</td><td>33</td><td>Pattali Makkal Katchi</td><td>Download</td></tr>
+					 <tr><td>2</td><td>Mr. Sivakumar</td><td>43</td><td>Dravida Munnetra Kazhagam</td><td>Download</td></tr>
+					 <tr><td>3</td><td>Mr. Kaus Pasha</td><td>45</td><td>Makkal Needhi Maiam</td><td>Download</td></tr>
+					 <tr><td>4</td><td>Mr. Kannan</td><td>46</td><td>All India Anna Dravida Munnetra Kazhagam</td><td>Download</td></tr>
+					 <tr><td>5</td><td>Mr. Devasakayam</td><td>47</td><td>Amma Makkal Munnettra Kazagam</td><td>Download</td></tr>
+					 <tr><td>6</td><td>Mr. Gnanaprakash</td><td>40</td><td>Naam Tamil Katchi</td><td>Download</td></tr>
+					 <tr><td>7</td><td>Mr. Mahendran</td><td>64</td><td>Bharatiya Janata Party</td><td>Download</td></tr>
+					</tbody>
+				</table>
+				<table id="table2" class="table tableizer-table">
+					<thead><tr class="tableizer-firstrow"><th>Serial Number</th><th>Name of the candidate</th><th>Age</th><th>Name of political party</th><th>Affidavit</th></tr></thead><tbody>
+					 <tr><td>1</td><td>Mrs. Gomati Santoshkumar</td><td>38</td><td>Independent candidate</td><td>Download</td></tr>
+					 <tr><td>2</td><td>Mrs. Jerome Virginia</td><td>36</td><td>Indiya Jananayaka Katchi</td><td>Download</td></tr>
+					 <tr><td>3</td><td>Mrs. Latha</td><td>45</td><td>Amma Makkal Munnettra Kazagam</td><td>Download</td></tr>
+					 <tr><td>4</td><td>Mrs. Rajathi</td><td>36</td><td>Naam Tamil Katchi</td><td>Download</td></tr>
+					 <tr><td>5</td><td>Mrs. Garden</td><td>67</td><td>Bharatiya Janata Party</td><td>Download</td></tr>
+					 <tr><td>6</td><td>Mrs. Shanthi</td><td>47</td><td>Pattali Makkal Katchi</td><td>Download</td></tr>
+					 <tr><td>7</td><td>Mrs. Bhavani</td><td>40</td><td>National Progressive Dravidian League</td><td>Download</td></tr>
+					 <tr><td>8</td><td>Mrs. Pandiammal</td><td>41</td><td>Independent candidate</td><td>Download</td></tr>
+					 <tr><td>9</td><td>Mrs. Nithya Sri</td><td>31</td><td>Makkal Needhi Maiam</td><td>Download</td></tr>
+					 <tr><td>10</td><td>Mrs. Mitra</td><td>39</td><td>All India Anna Dravida Munnetra Kazhagam</td><td>Download</td></tr>
+					 <tr><td>11</td><td>Mrs. Mohana</td><td>45</td><td>Dravida Munnetra Kazhagam</td><td>Download</td></tr>
+					</tbody>
+				</table>
+				<table id="table3" class="tableizer-table">
+				<thead><tr class="tableizer-firstrow"><th>Serial Number</th><th>Name of the candidate</th><th>Age</th><th>Name of political party</th><th>Affidavit</th></tr></thead><tbody>
+				 <tr><td>1</td><td>Mr. Aravindan</td><td>52</td><td>Naam Tamil Katchi</td><td>Download</td></tr>
+				 <tr><td>2</td><td>Mr. Charles</td><td>33</td><td>Indiya Jananayaka Katchi</td><td>Download</td></tr>
+				 <tr><td>3</td><td>Mr. Shanmugam</td><td>56</td><td>Makkal Needhi Maiam</td><td>Download</td></tr>
+				 <tr><td>4</td><td>Mr. Tamilarasan</td><td>47</td><td>Dravida Munnetra Kazhagam</td><td>Download</td></tr>
+				 <tr><td>5</td><td>Mr. Manivannan</td><td>51</td><td>All India Anna Dravida Munnetra Kazhagam</td><td>Download</td></tr>
+				 <tr><td>6</td><td>Mr. Surya</td><td>23</td><td>Pattali Makkal Katchi</td><td>Download</td></tr>
+				 <tr><td>7</td><td>Mr. Jayaprakash</td><td>44</td><td>Bharatiya Janata Party</td><td>Download</td></tr>
+				</tbody></table>
+			</div>
+		</div>
+
+
+<script type="text/javascript">
+    /* function goToPage(mySelect) {
+        PageIndex2 = mySelect.selectedIndex;
+        if ( mySelect.options[PageIndex2].value != "none") {
+    		frames['iframe'].location.href = mySelect.options[PageIndex2].value;
+		}
+	} */
+	$("#dropdown").on('change', function () {
+    $("table").each(function() { // hide all tables 
+        $(this).hide();
     });
-	
-    function add_phone_numbers(error, options, response){
-        if (!error) {
-          var tbody = document.createElement('tbody'); 
-
-          rows = response.rows;     
-
-          rows.forEach(function (row, row_index) {
-
-            var tr = document.createElement('tr');
-            if(row_index==0)
-            tr.bgColor = "#3CB371";
-            row.cellsArray.forEach(function (cell, cell_index) {
-              var td = document.createElement('td');
-              tr.appendChild(td);
-              var clean_text = cell.trim();
-              //find valid phone numbers in cell data annd add whatsapp link to it
-            });
-            tbody.appendChild(tr);
-
-          });
-          $('#people').empty();
-          document.getElementById('people').appendChild(tbody);  
-        }
-      }
-    
-    function search(val, spreadsheet, squery){
-      $('#noresults').hide();
-      $('#results').hide();
-      $('#people').empty();
-      if(val != ""){
-        if(val != viewFullList)
-          squery = squery + "'"+ val.toLowerCase() +"'";
-        $('#people').sheetrock({
-          url: spreadsheet,
-          query: squery,
-          reset: true
-        });
-        $('#results').show();
-      }
-    }
-
-    $(document ).ready(function() {
-      $('.scrollToTop').hide();
-      //Check to see if the window is top if not then display button
-    $(window).scroll(function(){
-        if ($(this).scrollTop() > 80) {
-            $('.scrollToTop').fadeIn();
-        } else {
-            $('.scrollToTop').fadeOut();
-        }
-    });
-      $('#noresults').hide();
-      $('#results').hide();
-	});
-
-    
-  </script>
-</div>
-<p>
-  <div>
-    <a href="#top" class="scrollToTop" style="position: absolute;right: 0;"><img src='scrollup.jpg' alt="Scroll Up" style='width: 50px;height: 50px;'/></a>
-  <script>
-       $("a[href='#top']").click(function() {
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-    return false;
-  });
-  </script>
-</div>
-</p>
+    var tableId = $(":selected", this).val(); // get linked table id
+		$("table#"+tableId+"").toggle(); // toggle linked table
+	}); 
+</script>
+					
 </body>
-</html>
+</html> 
